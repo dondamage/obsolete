@@ -1,0 +1,13 @@
+- check vendor HDL templates for different RTL elements.
+- get vendors tools to allow checking of synthesis results: Xilinx ISE (XST), Xilinx Vivado (?), Altera Quartus II (?), Lattice Diamond (?), Microsemi Libero (Synplify ME).
+    http://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/design-tools.html
+    https://www.altera.com/products/design-software/fpga-design/quartus-ii/download.tablet.html
+    http://latticesemi.com/latticediamond/downloads/#_229A1F76B8DF4E0098F41B8CC7935F62
+    http://www.microsemi.com/products/fpga-soc/design-resources/design-software/libero-soc
+- create one VM (Linux?) per vendor tool (version?).
+- get vendor simulators to allow simulation of HDL code and testbenches.
+- create latex template for documents (naming conventions, coding guideline),
+  also add bibtex.
+- create rtl and pkg templates, define basic file header for all files (doxygen?), use script support if helpful.
+- create libhdl documentation (use latex template).
+
