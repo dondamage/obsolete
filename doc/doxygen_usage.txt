@@ -1,0 +1,79 @@
+Install doxygen and add its executable to your path.
+Optionally install graphviz to support the automated drawing of diagrams
+and other graphics (and add its executable to your path?).
+
+Special doxygen comments start with --! and can be included into the source
+code to enable doxygen documentation generation.
+These special comments should be used sparingly and should not be heavily
+interleaved into the flow of source code.
+The recommended usage aims towards documentation of interfaces and naming
+the purpose of certain design units, e.g. processes, without going into
+obvious implementation details.
+
+The following special commands of doxygen are used for code documentation:
+
+\author
+\authors
+In file header: name of the author(s) of the file.
+
+\brief
+In file header: brief description of the design unit implemented in the file.
+                This should be a very compact summary of the task a design unit carries
+                out or the functionality it offers.
+Before process|subprogram: brief description of the functionality or purpose of the process|subprogram.
+
+\bug
+In file header: notify the user about bugs and known issues. Each bug/issue is listed separately.
+
+\copyright
+In file header: state the copyright and licensing conditions that apply to the file.
+                Should also contain contact information of the author or copyright holder.
+
+\date
+In file header: date at which the last modification occured. The file header in total should always
+                be updated as soon as it becomes necessary.                
+
+\details
+In file header: 
+Before process|subprogram: 
+
+\file
+In file header: add this command to enable doxygen documentation generation.
+
+\note
+Anywhere: Add to point out non-obvious connections and/or interrelations.
+          A note should add information and increase the understanding of code/text.
+          Do not repeat yourself.
+
+\param
+Before subprograms: parameters to subprogram.
+Before processes:
+
+\post
+Before subprograms: postcondition after calling subprogram.
+Before processes:
+
+\pre
+Before subprograms: precondition before calling subprogram.
+Before processes:
+
+\see
+In file header: list of references useful for the understanding of the file.
+                E.g. standards, RFCs, papers, book chapters, web links &cetera.
+
+\todo
+In file header: to remember tasks which must done later on but not right now.
+In source code:
+
+\version
+In file header: version of the file. Automagic incrementing preferable.
+
+\vhdlflow
+Before process: Add in front of a process to create a flow diagram of the process.
+                Works decently well, but diagrams tend to get too big for
+                processes with normal complexity.
+
+\warning
+In file header: 
+In source code: Add within the code to prevent erroneous interpretation of code.
+
