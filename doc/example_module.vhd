@@ -24,6 +24,15 @@
 --! \copyright Copyright (C) 2015, Andreas Muller
 --!            GNU General Public License Version 2
 --!
+--!            This program is free software; you can redistribute it and/or
+--!            modify it under the terms of the GNU General Public License as
+--!            published by the Free Software Foundation; either version 2 of
+--!            the License, or (at your option) any later version.
+--!            This program is distributed in the hope that it will be useful,
+--!            but WITHOUT ANY WARRANTY; without even the implied warranty of
+--!            MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+--!            GNU General Public License for more details.
+--!
 --============================================================================
 
 
@@ -70,32 +79,16 @@ begin
     --! \vhdlflow
     p_my_process_label:
     process (clk_i, rst_i) is
-        variable tmp : std_logic_vector(2 downto 0);
     begin
         if (rst_i = '1') then
             my_port_o <= (others => '0');
         elsif rising_edge(clk_i) then
-            tmp := std_logic_vector(resize(unsigned(my_select_i), 3));
-            case (tmp) is
-                when "000" =>
-                    my_port_o <= std_logic_vector(unsigned(my_port_i) + 1);
-                when "001" =>
-                    my_port_o <= std_logic_vector(unsigned(my_port_i) + 1);
-                when "010" =>
-                    my_port_o <= std_logic_vector(unsigned(my_port_i) + 2);
-                when "011" =>
-                    my_port_o <= std_logic_vector(unsigned(my_port_i) + 3);
-                when "100" =>
-                    my_port_o <= std_logic_vector(unsigned(my_port_i) + 5);
-                when "101" =>
-                    my_port_o <= std_logic_vector(unsigned(my_port_i) + 8);
-                when "110" =>
-                    my_port_o <= std_logic_vector(unsigned(my_port_i) + 13);
-                when "111" =>
-                    my_port_o <= std_logic_vector(unsigned(my_port_i) + 21);
-                when others =>
-                    my_port_o <= std_logic_vector(unsigned(my_port_i) + 1);
-            end case;
+            assert (to_integer(unsigned(my_select_i)) < my_port_i'length)
+            report "example_module: Invalid signal value."
+            severity error;
+            
+            my_port_o <= (others => my_port_i(to_integer(unsigned(
+                my_select_i))));
         end if;
     end process;
 end architecture rtl;
