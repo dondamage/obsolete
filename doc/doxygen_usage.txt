@@ -1,8 +1,8 @@
 Install doxygen and add its executable to your path.
 Optionally install graphviz to support the automated drawing of diagrams
-and other graphics (and add its executable to your path?).
+and other graphics (and add its executable to your path).
 
-Special doxygen comments start with --! and can be included into the source
+Special doxygen comments start with '--!' and can be included into the source
 code to enable doxygen documentation generation.
 These special comments should be used sparingly and should not be heavily
 interleaved into the flow of source code.
@@ -20,10 +20,11 @@ In file header: name of the author(s) of the file.
 In file header: brief description of the design unit implemented in the file.
                 This should be a very compact summary of the task a design unit carries
                 out or the functionality it offers.
-Before process|subprogram: brief description of the functionality or purpose of the process|subprogram.
+Before process|subprogram|block|component instantiation: brief description of the functionality or purpose of the following design unit.
 
 \bug
 In file header: notify the user about bugs and known issues. Each bug/issue is listed separately.
+                If possible a way to avoid or work around the bug/issue should be suggested.
 
 \copyright
 In file header: state the copyright and licensing conditions that apply to the file.
@@ -35,10 +36,15 @@ In file header: date at which the last modification occured. The file header in 
 
 \details
 In file header: 
-Before process|subprogram: 
+Before process|subprogram|block|component instantiation: more detailed description of the implementation of the design unit. Limitations and basic design criterions can be elaborated.
+
+\example:
+In file header: a short example of the usage of the design unit.
+Before subprogram: show an usage example and the expected results.
 
 \file
 In file header: add this command to enable doxygen documentation generation.
+                Only the name of the file without file extension should be noted here.
 
 \note
 Anywhere: Add to point out non-obvious connections and/or interrelations.
@@ -51,11 +57,11 @@ Before processes:
 
 \post
 Before subprograms: postcondition after calling subprogram.
-Before processes:
+Before processes: postcondition after the process has carried out its intended task.
 
 \pre
 Before subprograms: precondition before calling subprogram.
-Before processes:
+Before processes: precondition for a process to start its intended task.
 
 \see
 In file header: list of references useful for the understanding of the file.
@@ -63,10 +69,11 @@ In file header: list of references useful for the understanding of the file.
 
 \todo
 In file header: to remember tasks which must done later on but not right now.
-In source code:
+In source code: a reminder for improvements and/or limitations of code segments or implementation choices.
 
 \version
-In file header: version of the file. Automagic incrementing preferable.
+In file header: version of the file. Automagic incrementing preferable on commit.
+                The format of the version should be specified up ahead.
 
 \vhdlflow
 Before process: Add in front of a process to create a flow diagram of the process.
@@ -74,6 +81,6 @@ Before process: Add in front of a process to create a flow diagram of the proces
                 processes with normal complexity.
 
 \warning
-In file header: 
+In file header: warn of common errors or wrong usage of the design unit.
 In source code: Add within the code to prevent erroneous interpretation of code.
 
