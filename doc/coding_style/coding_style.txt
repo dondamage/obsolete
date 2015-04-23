@@ -1,0 +1,80 @@
+Common coding style guidelines:
+
+TODO: 1. check vendor coding guidelines.
+      2. check community coding guidelines (OpenCores, papers).
+      3. check differences b/w HDL versions (vhdl-87/93/0X/08, verilog-95-01).
+         vendors include: xilinx, altera, lattice (microsemi,aldec,actel).
+
+- differentiate b/w conservative and progressive mindset. (vhdl-87 for conservatives)?
+- Only one statement/expression per line.
+- Only one port declaration per line in entity/module interface declarations.
+- Only one signal/wire/reg declaration per line.
+- Only one constant/parameter/localparam declaration per line.
+- Use indentation to show your intent.
+- Use only spaces for indentation instead of tabs, so the code looks the same in all editors without regard to editor settings.
+- Indent by 4 tabs or 2 tabs. be consistent with your indentation rules.
+- Indent such that similar keywords and identifiers are in the same 'column'. tedious by hand, but there are tools which help with this.
+- Each line should contain at most 78 characters (A4 paper width). often you will read 80, but we restrict us to 78 if we want to print NL CR or leading line numbers..
+- spaces around keywords, e.g. if ( not if(.
+- no space b/w function/procedure/task and opening paranthesis, e.g. myfunc(arg1.
+- use parenthesis to make precedence explicit, e.g. a = (b or c) and d not a = b or c and d. we all know that 'and' has precedence over 'or' in logic equations, but did the person writing the code have this in mind when she wrote the code?
+- Use assert statement whenever appropriate. they are ignored by synthesis tools.
+- Use fitting types that save you superfluous asserts, e.g. GEN1 : POSITIVE instead of GEN1 : integer ... assert (GEN1>=1).
+- Types vs asserts: when having to choose b/w using a specific type or using
+  an assert to verfy that a value is within a certain range, one should prefer
+  the type, especially if the type is predefined in the standard packages.
+  For module interfaces standard types + assert is preferable. otherwise there
+  will be a lot of typecasting required in the place where the module is
+  instantiated or packages will need to be included which can clutter the
+  namespace.
+- when importing a module avoid the use of 'all', unless it is a standard
+  package. even then, its generally better to follow the common practice of
+  high level programming languages and explicitly only include/import those
+  items in a package which are required.
+- Avoid vendor specific synthesis pragmas/directives, because its unwise to give different information to the simulator and the synthesis tool!
+- In a clocked process/always block assign default values to all signals driven from within that process/always block. This will help to avoid unintentionally inferred latches 99% of the time.
+- FSM coding styles, one process method, two process method, all registers in record method (VHDL), etc.
+- If code generators are used, save the generator input file or log for each
+  source file you generate for later reference. make clear which version was
+  used. prefer the verilog preprocessor if possible.
+- if you have to use vendor primitives/macros wrap them. as a general rule
+  your code should be separated from vendor cores/primitives/macros/parts to
+  simplilfy porting to other parts. same for simulation.
+- avoid aliases. use them only sparingly and careful. remember that code
+  highlighting usually isnt aware of aliases.
+- use records to group related interface signals. this only pays of when an
+  interface is used in more than one place. conservatives: hands off.
+- unclear topic: should a counter be embedded within the sequential part of a
+  FSM, or should it be within a separate process, controlled by control signals
+  from within the FSM.
+
+VHDL coding style:
+Some nice things are only possible with VHDL-2008.
+- Where to put the paranthesis? many different options, but don't mix styles.
+  present most common styles, pros and cons, personal preference.
+- Entity style.
+- Component style = entity style.
+- Instantiation style = entity style.
+- process style.
+- concurrent assignment styles.
+- type casting.
+- create a short alias for std_logic_vector, e.g. slv. this will save lots of typing.
+- also create shorthand notations for typical type casts, e.g. slv2integer, slv2natural. I prefer slv_to_integer, it's longer but consistent with the type casts of numeric_std.
+- signals and ports are std_logic_vector most often (90%), even if bit_vector would be sufficient, since the additional meta values of std_logic are seldom really required. you could create an alias for the standard vector type used in a design, so it can be easily switched (no effect on synthesis however, so stick with slv).
+- Use only slv/bit_vector and integer for generic types and port types for maximum compatibility with other HDLs (mixed HDL projects).
+- you should always have a helper function to cast b/w FSM state and slv if debugging may be required. the function for this can be of the form enum2slv...
+- 
+
+
+Verilog coding style:
+Some nice things are only possible with SystemVerilog.
+- When coding Verilog we can learn from C.
+- Use header guards.
+- One file per module, one header file per module.
+- Do not rely on implicit features of Verilog, but make your intent explicit.
+- Use case statements for parallel logic and if-else-if-.. statements for priority encoder logic. In Verilog a case statement can also be used to code priotity encoder logic, since overlapping case items are allowed.
+- In case statements with don't cares use casez and ? for don't cares.
+
+
+References:
+
