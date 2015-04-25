@@ -18,3 +18,14 @@ QUESTIONS:
 
 own HDL language parser is overkill. what open source implementations do exist?
 
+THIRD PARTY TOOLS:
+
+doxygen
+http://www.stack.nl/~dimitri/doxygen/index.html
+
+veditor, Verilog/VHDL support for eclipse
+
+iverilog
+
+ghdl
+
