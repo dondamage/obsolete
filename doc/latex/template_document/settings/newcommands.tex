@@ -1,0 +1,38 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%   newcommands.tex
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% float parameters for better placement of float objects
+\renewcommand{\floatpagefraction}{.75} % default .5
+\renewcommand{\textfraction}{.15}
+\renewcommand{\topfraction}{.8}
+\renewcommand{\bottomfraction}{.5}
+
+% different reference styles
+\newcommand{\Def}[1]{Definition~\ref{def:#1}}
+\newcommand{\Equ}[1]{Equation~\ref{equ:#1}}
+\newcommand{\EQu}[2]{Equations~\ref{equ:#1}~and~\ref{equ:#2}}
+\newcommand{\EQU}[3]{Equations~\ref{equ:#1},~\ref{equ:#2} and~\ref{equ:#3}}
+\newcommand{\Exa}[1]{Example~\ref{exa:#1}}
+\newcommand{\Fig}[1]{Figure~\ref{fig:#1}} % Abb
+\newcommand{\fig}[1]{~Fig.~\ref{fig:#1}} % abb
+\newcommand{\FIG}[2]{Figures~\ref{fig:#1} and~\ref{fig:#2}} % ABB
+\newcommand{\Figures}[2]{~Figures~\ref{G:#1} to \ref{G:#2}} % Abbildungen
+\newcommand{\Tab}[1]{Table~\ref{tab:#1}}
+\newcommand{\Chap}[1]{Chapter~\ref{chap:#1}} % Kap
+\newcommand{\Sec}[1]{Section~\ref{sec:#1}}
+\newcommand{\Subsec}[1]{Subsection~\ref{subsec:#1}}
+\newcommand{\App}[1]{Appendix~\ref{app:#1}}
+\newcommand{\AppSec}[1]{Appendix~\ref{sec:#1}}
+
+% set table columns with ragged alignment, \\ before e.g. \raggedright must be protected:
+\newcommand{\PBS}[1]{\let\temp=\\#1\let\\=\temp}
+
+\def\signed #1{{\leavevmode\unskip\nobreak\hfil\penalty50\hskip2em
+  \hbox{}\nobreak\hfil(#1)%
+  \parfillskip=0pt \finalhyphendemerits=0 \endgraf}}
+
+\newsavebox\mybox
+\newenvironment{aquote}[1]
+  {\savebox\mybox{#1}\begin{quote}}
+  {\signed{\usebox\mybox}\end{quote}}

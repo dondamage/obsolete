@@ -1,0 +1,39 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%   abbreviations.tex
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\addchap{Abbreviations}
+
+% {\Large{\textbf{Abbreviations}}} % alternative headline if no chapter headline is generated
+
+% {\flushleft{\rule{0.95\textwidth}{0.5mm}}}
+
+\vspace{0mm}
+    \setlength\LTleft{0pt}
+    \setlength\LTright{0pt}
+
+% table with abbreviations used throughout the document
+% longtable allows pagebreaks
+% 2 columns, the first left aligned, the second with linebreaks
+% between two lines a defined spacing is inserted
+\begin{longtable}{l @{\extracolsep\fill} p{0.8\textwidth} }
+\toprule
+{\itshape Abbreviation} & {\itshape Description} \\
+\hline \hline
+\endfirsthead
+\hline \multicolumn{2}{r}{{continued from previous page}} \\ \hline
+{\itshape Abbreviation} & {\itshape Description} \\
+\hline
+\endhead
+\hline \multicolumn{2}{r}{{Continued on next page}} \\ \hline
+\endfoot
+\hline \hline
+\endlastfoot
+
+% xxx                         & \ul{} \ul{} \ul{} \\
+
+BPSK                    & \ul{B}inary \ul{P}hase-\ul{S}hift \ul{K}eying \\
+
+\end{longtable}
+
+% {\flushleft{\rule{0.95\textwidth}{0.5mm}}}

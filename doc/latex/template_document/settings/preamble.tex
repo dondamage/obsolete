@@ -1,0 +1,124 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%   preamble.tex
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%   language options and text formatting
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% packages to use Latin1 writing
+\usepackage[english]{babel}
+\usepackage[latin1]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{verbatim} % text output as shown in editor, TeX directives are ignored
+\usepackage{upgreek} % upstanding greek letters
+
+% package to change line spacing
+\usepackage{setspace}
+\onehalfspace % 1.5 times normal line spacing
+
+% package to allow multiple special characters in file names, e.g. of a figure in \includegraphics{...}
+\usepackage{grffile}
+
+% package to allow \verb|...| in captions by plaxing \cprotect before the \caption{...}
+\usepackage{cprotect}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%   graphics, lists, fonts and tables
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% simplified use of different bullets in lists
+\usepackage{paralist}
+
+% packages for extended table settings
+\usepackage{array}              % text alignment in columns
+
+% define new column types for tabuler environment (requires package array); usage: L{4cm}
+\newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{R}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+
+\usepackage{dcolumn}            % align floating point numbers in tables at period
+\usepackage{multirow}           % tables with multiple rows
+\usepackage{tabularx}           % extended table options
+\usepackage{colortbl}           % shadows in tables
+\usepackage{longtable}          % multi-page tables
+\usepackage{tabu}               % easy tables with automatic line and page breaks, requires longtable!
+\usepackage{booktabs}           % tables according to DIN
+\usepackage{lscape}             % change page orientation to landscape by calling \begin{landscape}, problem: whole page is rotated
+\usepackage{rotating}           % rotate floating objects by 90 degree by calling \begin{sideways} or with given angle \begin{rotate}{90}
+\usepackage[section]{placeins}  % avoids moving of tables, graphics, etc. over section borders
+
+% packages to embed graphics
+% \usepackage{graphics}           % standard graphics package
+\usepackage{graphicx}           % extended graphic options
+\usepackage[percent]{overpic}   % allows to superimpose a pic over another
+% \usepackage[dvips]{epsfig}
+% \usepackage[dvips]{graphicx}
+\usepackage{psfrag}             % replace labels in EPS-files
+\usepackage{caption}
+\usepackage{subcaption}
+%\usepackage[caption=false]{subfig} % allow subfigures, but without caption
+\usepackage[format=hang,labelfont=bf]{caption}
+\usepackage{float}
+
+% set special font in koma-script
+\setkomafont{sectioning}{\normalfont\bfseries}
+\setkomafont{captionlabel}{\normalfont\bfseries}
+% \setkomafont{pagehead}{\normalfont\itshape}
+\setkomafont{descriptionlabel}{\normalfont\bfseries}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%   mathematical symbols from ams package
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{amsthm} % for \newtheorem
+\newtheorem{definition}{Definition}[subsection]
+\newtheorem{example}{Example}[subsection]
+\usepackage{trfsigns}
+\usepackage{stmaryrd}
+
+\setcounter{MaxMatrixCols}{25} % set the maximum number of matrix columns of package amsmath's matrix environments like bmatrix or pmatrix
+
+% bmatrix and pmatrix environment with vertical linies e.g. \begin{bmatrix}[c|c]...
+\makeatletter
+\renewcommand*\env@matrix[1][*\c@MaxMatrixCols c]{%
+  \hskip -\arraycolsep
+  \let\@ifnextchar\new@ifnextchar
+  \array{#1}}
+\makeatother
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%   headers and footers
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage[headsepline,plainheadsepline,footsepline,plainfootsepline]{scrpage2} % package to control headers and footers
+\pagestyle{scrheadings} % load page style of package scrpage2
+\clearscrheadings % delete default style for following pages
+\clearscrplain % delete default style for first page of chapter
+
+% alignment of data in header and footer
+\lohead[\headmark]{\headmark} % insert chapter name in left header
+\rohead[\pagemark]{\pagemark} % insert page number in right sde header
+
+% load and set footer layout
+%\input{settings/footer}
+%\ifoot[\usebox{\footer}]{\usebox{\footer}}
+\automark{chapter} % automatical update of chapter in header
+
+% seperators
+\setheadsepline{.4pt}
+\setfootsepline{.4pt}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%   bibliography
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{bibgerm}
+
+\renewcommand{\bibname}{References}
+
+\listfiles % list used files in log

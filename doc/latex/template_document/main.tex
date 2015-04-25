@@ -1,0 +1,105 @@
+% andreas
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%   main.tex
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% load settings, commands and header
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% document header
+\input{settings/header}
+
+% authors data, title, key words etc.
+\input{settings/labels}
+
+% load pdf options, seperated from preamble due to problems with \onehalfspacing
+\input{settings/pdfoptions}
+
+% document settings
+\input{settings/preamble}
+
+% import new commands (user defined)
+\input{settings/newcommands}
+\input{settings/equations}
+
+% import commands for eps graphics
+\input{settings/psfrag}
+
+% import rules for hyphenation / word breaks
+\input{settings/hyphenation}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% begin of document
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% title page and notation
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% title page
+\include{chapters/titlepage}
+
+% roman numbering for title and prefacing parts
+\pagenumbering{Roman}
+
+% start page numbering on second page
+\setcounter{page}{1}
+
+% abstract, rough outline of the work
+\include{chapters/abstract}
+
+% create table of contents
+\tableofcontents
+
+% create list of abbreviations
+%\include{notation/abbreviations}
+
+% create list of (formula) symbols
+%\include{notation/symbols}
+
+% create list of figures, uncommon
+%\listoffigures
+
+% create list of tables, uncommon
+%\listoftables
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% main part
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% arabic numbering for main part
+\clearpage
+\pagenumbering{arabic}
+\setcounter{page}{1}
+
+% include all chapters
+\include{chapters/chapter_1} % introduction
+
+\include{chapters/chapter_conclusions}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% appendix
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{appendix}
+
+% include all chapters of the appendix
+
+\include{appendix/appendix_a}
+
+\end{appendix}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% bibliography and tailer
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% % bibliography
+\include{references/references}
+
+% % print a list of keywords
+% \printindex
+
+\end{document}

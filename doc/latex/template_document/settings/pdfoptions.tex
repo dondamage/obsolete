@@ -1,0 +1,47 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%   pdfoptions.tex
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% package for colors in pdf
+\usepackage{color}
+\definecolor{lightgray}{rgb}{0.9,0.9,0.9}
+\definecolor{Linkcolor}{rgb}{0,0,0.5}
+
+% link chapters, figures, tables and literature
+\usepackage[
+    a4paper,
+    breaklinks      = true,
+    ps2pdf,
+    colorLinks      = false,
+    linkcolor       = blue,
+    pdftitle        = {\worktitle},
+    pdfauthor       = {\author},
+    pdfsubject      = {\worksubject},
+    pdfkeywords     = {\keywords}
+]{hyperref}
+
+\usepackage[savemem]{listings}
+\lstloadlanguages{TeX}
+% \lastloadlanguages{Matlab}
+
+% create bibliography with bibtex
+\usepackage{cite}
+
+% listing definition for php code
+\definecolor{lbcolor}{rgb}{0.85,0.85,0.85}
+\lstset{
+    language            = [LaTeX]TeX,
+    numbers             = left,
+    stepnumber          = 1,
+    numbersep           = 5pt,
+    breaklines          = \tiny,
+    breaklines          = true,
+    breakautoindent     = true,
+    postbreak           = \space,
+    tabsize             = 2,
+    basicstyle          = \ttfamily\footnotesize,
+    showspaces          = false,
+    showstringspaces    = false,
+    extendedchars       = true,
+    backgroundcolor     = \colo{lbcolor}
+}

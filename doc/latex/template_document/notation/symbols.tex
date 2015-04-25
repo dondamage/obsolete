@@ -1,0 +1,48 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%   symbols.tex
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\addchap{Symbols}
+
+% {\Large{\textbf{Symbols}}} % alternative headline if no chapter headline is generated
+
+% {\flushleft{\rule{0.95\textwidth}{0.5mm}}}
+
+\vspace{0mm}
+    \setlength\LTleft{0pt}
+    \setlength\LTright{0pt}
+
+% table with symbols used throughout the document
+% longtable allows pagebreaks
+% 2 columns, the first left aligned, the second with linebreaks
+% between two lines a defined spacing is inserted
+\begin{longtable}{l >{\PBS\raggedright\hspace{0pt}}p{0.7\linewidth} @{\extracolsep\fill} c }
+\toprule
+{\itshape Symbol} & {\itshape Description} & {\itshape Unit}\\
+\hline \hline
+\endfirsthead
+\hline \multicolumn{3}{r}{{continued from previous page}} \\ \hline
+{\itshape Symbol} & {\itshape Description} & {\itshape Unit}\\
+\hline
+\endhead
+\hline \multicolumn{3}{r}{{Continued on next page}} \\ \hline
+\endfoot
+\hline \hline
+\endlastfoot
+
+\\\multicolumn{3}{l}{\textbf{Latin Letters}}\\
+
+$A$                     & Some symbol & \\
+
+\midrule
+\\
+
+\multicolumn{3}{l}{\textbf{Greek Letters}}\\
+
+$\omega$                & angular frequency                 & rad 1/s \\
+
+\bottomrule
+
+\end{longtable}
+
+% \end{flushleft}
