@@ -1,8 +1,17 @@
-*libhdl*
+libhdl
+======
+
+The libhdl project is released as free software under the terms of the GPLv2.
+
+Overview
+--------
+
 This project contains a growing collection of components and packages, which present
 solutions to common HDL design problems. Most HDL components are only offered in VHDL at the
 moment. Verilog may follow later.
 
+Folder Structure
+----------------
 
 The repository folder structure is briefly outlined in the following:
 
