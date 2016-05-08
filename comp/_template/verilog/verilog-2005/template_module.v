@@ -21,6 +21,7 @@
 * \version   <VERSION>
 * \date      <YYYY-MM-DD>
 * \author    <AUTHOR_NAME>
+* \brief     Create file.
 *
 *****************************************************************************/
 

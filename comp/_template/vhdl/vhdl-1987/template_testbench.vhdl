@@ -25,17 +25,14 @@
 --!
 --============================================================================
 
-library ieee;
-    use ieee.numeric_std.all;
-    use ieee.std_logic_1164.all;
-
-package template_package is
-end template_package;
-
 
 library ieee;
     use ieee.numeric_std.all;
     use ieee.std_logic_1164.all;
 
-package body template_package is
-end template_package;
+entity template_testbench is
+end entity template_testbench;
+
+architecture tb of template_testbench is
+begin
+end tb;

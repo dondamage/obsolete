@@ -4,7 +4,7 @@
 *
 * \project   <PROJECT_NAME>
 *
-* \langv     Verilog-1995
+* \langv     SystemVerilog-2005
 *
 * \brief     <BRIEF_DESCRIPTION>.
 *
@@ -30,10 +30,7 @@ module module_template
     parameter MY_PARAMETER = 8
 )
 (
-    my_port
+    input wire my_port
 );
-
-input my_port;
-wire my_port;
 
 endmodule
