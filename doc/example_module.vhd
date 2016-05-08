@@ -40,7 +40,9 @@ library ieee;
     use ieee.numeric_std.all;
     use ieee.std_logic_1164.all;
 
+--! \brief A brief package description.
 package template_module_package is
+    --! \brief This is the component declaration for my entity.
     component template_module is
         generic (
             my_generic : integer := 0
@@ -52,21 +54,23 @@ package template_module_package is
 end package template_module_package;
 
 
+--! \brief Import standard packages.
 library ieee;
     use ieee.numeric_std.all;
     use ieee.std_logic_1164.all;
 
+--! \brief A brief entity description.
 entity template_module is
     generic (
-        MY_GENERIC_A : integer := 8;
-        MY_GENERIC_B : integer := 3
+        MY_GENERIC_A : integer := 8; --! This generic does foo.
+        MY_GENERIC_B : integer := 3  --! That generic does bar.
     );
     port (
-        clk_i       : in std_logic;
-        rst_i       : in std_logic;
-        my_port_i   : in std_logic_vector(MY_GENERIC_A-1 downto 0);
-        my_select_i : in std_logic_vector(MY_GENERIC_B-1 downto 0);
-        my_port_o   : out std_logic_vector(MY_GENERIC_A-1 downto 0)
+        clk_i       : in std_logic; --! Clock input.
+        rst_i       : in std_logic; --! Reset input.
+        my_port_i   : in std_logic_vector(MY_GENERIC_A-1 downto 0); --! My input port description.
+        my_select_i : in std_logic_vector(MY_GENERIC_B-1 downto 0); --! My select description.
+        my_port_o   : out std_logic_vector(MY_GENERIC_A-1 downto 0) --! My output port description.
     );
 begin
     assert (2**MY_GENERIC_B >= MY_GENERIC_A)
@@ -74,8 +78,25 @@ begin
     severity FAILURE;
 end entity template_module;
 
+--! \brief A brief architecture description.
 architecture rtl of template_module is
+    --! \brief A brief function description.
+    --! \param Description of parameter 1.
+    --! \return Description of return value.
+    function my_function(param1 : integer) return integer is
+    begin
+        return param1;
+    end function my_function;
+    
+    --! \brief A brief procedure description.
+    --! \param Description of parameter 1.
+    --! \return Description of return value.
+    procedure my_procedure(param1 : in integer, reval1 : out integer) is
+    begin
+        reval1 <= param1;
+    end function my_procedure;
 begin
+    --! \brief A brief process description.
     --! \vhdlflow
     p_my_process_label:
     process (clk_i, rst_i) is
