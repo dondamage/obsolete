@@ -1,17 +1,17 @@
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %   preamble.tex
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %   language options and text formatting
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % packages to use Latin1 writing
 \usepackage[english]{babel}
 \usepackage[latin1]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage{verbatim} % text output as shown in editor, TeX directives are ignored
-\usepackage{upgreek} % upstanding greek letters
+%\usepackage{upgreek} % upstanding greek letters
 
 % package to change line spacing
 \usepackage{setspace}
@@ -21,11 +21,11 @@
 \usepackage{grffile}
 
 % package to allow \verb|...| in captions by plaxing \cprotect before the \caption{...}
-\usepackage{cprotect}
+%\usepackage{cprotect}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %   graphics, lists, fonts and tables
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % simplified use of different bullets in lists
 \usepackage{paralist}
@@ -39,20 +39,20 @@
 \newcolumntype{R}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
 
 \usepackage{dcolumn}            % align floating point numbers in tables at period
-\usepackage{multirow}           % tables with multiple rows
+%\usepackage{multirow}           % tables with multiple rows
 \usepackage{tabularx}           % extended table options
 \usepackage{colortbl}           % shadows in tables
 \usepackage{longtable}          % multi-page tables
-\usepackage{tabu}               % easy tables with automatic line and page breaks, requires longtable!
+%\usepackage{tabu}               % easy tables with automatic line and page breaks, requires longtable!
 \usepackage{booktabs}           % tables according to DIN
 \usepackage{lscape}             % change page orientation to landscape by calling \begin{landscape}, problem: whole page is rotated
 \usepackage{rotating}           % rotate floating objects by 90 degree by calling \begin{sideways} or with given angle \begin{rotate}{90}
-\usepackage[section]{placeins}  % avoids moving of tables, graphics, etc. over section borders
+%\usepackage[section]{placeins}  % avoids moving of tables, graphics, etc. over section borders
 
 % packages to embed graphics
 % \usepackage{graphics}           % standard graphics package
 \usepackage{graphicx}           % extended graphic options
-\usepackage[percent]{overpic}   % allows to superimpose a pic over another
+%\usepackage[percent]{overpic}   % allows to superimpose a pic over another
 % \usepackage[dvips]{epsfig}
 % \usepackage[dvips]{graphicx}
 \usepackage{psfrag}             % replace labels in EPS-files
@@ -68,9 +68,9 @@
 % \setkomafont{pagehead}{\normalfont\itshape}
 \setkomafont{descriptionlabel}{\normalfont\bfseries}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %   mathematical symbols from ams package
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \usepackage{amsmath}
 \usepackage{amssymb}
@@ -78,8 +78,8 @@
 \usepackage{amsthm} % for \newtheorem
 \newtheorem{definition}{Definition}[subsection]
 \newtheorem{example}{Example}[subsection]
-\usepackage{trfsigns}
-\usepackage{stmaryrd}
+%\usepackage{trfsigns}
+%\usepackage{stmaryrd}
 
 \setcounter{MaxMatrixCols}{25} % set the maximum number of matrix columns of package amsmath's matrix environments like bmatrix or pmatrix
 
@@ -91,9 +91,9 @@
   \array{#1}}
 \makeatother
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %   headers and footers
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \usepackage[headsepline,plainheadsepline,footsepline,plainfootsepline]{scrpage2} % package to control headers and footers
 \pagestyle{scrheadings} % load page style of package scrpage2
@@ -113,12 +113,13 @@
 \setheadsepline{.4pt}
 \setfootsepline{.4pt}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %   bibliography
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\usepackage{bibgerm}
+%\usepackage{bibgerm}
 
 \renewcommand{\bibname}{References}
 
 \listfiles % list used files in log
+

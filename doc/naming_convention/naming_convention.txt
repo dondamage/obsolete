@@ -3,80 +3,109 @@ Common naming conventions:
 TODO: 1. check vendor naming conventions (vendor HDL primitives libs).
       2. check community naming conventions (OpenCores, papers).
       
-Naming conventions for RTL code and packages. Testbenches and verification logic may have their own naming convention, e.g. imposed by OVM/UVM or OSVVM.
+Naming conventions for RTL code and packages.
+Testbenches and verification logic may have their own naming convention,
+e.g. imposed by OVM/UVM or OSVVM.
 
-general overview over naming styles: CapitalizedWords/CapWords/CamelCase, Cap_Words_With_Underlines(-), lowercase, lower_case_with_underlines, UPPERCASE, UPPER_CASE_WITH_UNDERLINES, mixedCase.
+General overview over naming styles:
+    CapitalizedWords/CapWords/CamelCase,
+    Cap_Words_With_Underlines(-),
+    lowercase,
+    lower_case_with_underlines,
+    UPPERCASE,
+    UPPER_CASE_WITH_UNDERLINES,
+    mixedCase.
 
 - use clear, concise names that tell the user what she is looking at.
 - make names as long as necessary while keeping them as short as possible.
 - use the same name for the same thing throughout the design (even across
-hierarchical boundaries? yes if possible, within one "contextual unit").
-- use labels/comments which name the RTL element that is being described in the following process/always block, e.g. 'output_data_mux'.
-- avoid keywords, also across language boundaries, e.g. do not use 'do' for a port/signal name since it's a keyword in SystemVerilog (Verilog-2005). not that important, since background knowledge required + one more task when migrating to another HDL/HVL.
-- do not imply constraint information on RTL code signals. its redundant and can cause lots of trouble. e.g. do not name a clock 'clk_100M' but 'system_clk'. someone will change the PLL to output a 80 MHz clock but will not bother updating the signal name -> trouble approaching. 'data_clk_8x' is ok, since it states the relation to another clock, and this relation is implemented/performed by RTL code.
-    - modules, what is done, what task is performed, how (only if relevant to
-    the visible interface, e.g. fwft for "first word fall through" behavior).
-    - *_i for input ports.
-    - *_o for output ports.
-    - *_io/buf for inout/buffer ports.
-    - signals:
-        - *_n/p for differential signal pairs.
-        - *_n to emphasize when a signal is low active.
-        - *_p to emphasize when a signal is high active.
-        - *_reg to emphesize that a signal represents a register.
-        - *_comb for the result of a combinatoric process.
-        - *_dX for delayed signals with X = delay in clock cycles,
-          e.g. data_d3.
-          also: *_prevX.
-        - *_nX for preloaded value with X = preload time in clock cycles,
-          e.g. data_n2 if data is valid/used in 2 clock cycles.
-          also: *_nextX.
-        - *_flag for flags that are sticky until reset by another signal.
-          To indicate an event has occured, e.g. zero flag.
-          For toggling applications, e.g. busy_flag asserted when a command is
-          issued and deasserted when process finished command.
-        - *_pulse for signals that only go high/low for one clock cycle.
-          also: *_strobe.
-        - *_sflag for status flag.
-        - *_sreg for status register.
-        - *_cflag for config flags.
-        - *_creg for config register.
-        - *_ctrl for signals that control data path logic,
-          e.g. mux_ctrl for the select signal of a multiplexer.
-        - *_tri for tristate signals.
-        - *_async for asynchronous signals or ports(?).
-    - C_* for constants, all caps.
-    - S_* for FSM states, all caps (since each state is encoded as a constant
-      somehow).
+  hierarchical boundaries? yes if possible, within one "contextual unit").
+- use labels/comments which name the RTL element that is being described in
+  the following process/always block, e.g. 'output_data_mux'.
+- avoid keywords, also across language boundaries, e.g. do not use 'do' for a
+  port/signal name since it's a keyword in SystemVerilog (Verilog-2005).
+  this will save us one more renaming task when migrating to another HDL/HVL.
+- do not imply constraint information on RTL code signals.
+  its redundant and can cause lots of trouble. e.g. do not name a clock
+  'clk_100M' but 'system_clk'. someone will change the PLL to output a 80 MHz
+  clock but will not bother updating the signal name -> trouble approaching.
+  'data_clk_8x' is ok, since it states the relation to another clock, and this
+  relation is implemented/performed by RTL code. this mainly holds for
+  independent modules which are supposed to be distributed as IP cores.
+  of course, when the property is absoulte, e.g. the freq of a clock, it can
+  be named accordingly.
+- module naming conventions:
+    - what is done, what task is performed, how (only if relevant to the
+      visible interface, e.g. fwft for "first word fall through" behavior).
+    - <port_name>_i for input ports.
+    - <port_name>_o for output ports.
+    - <port_name>_io/buf for inout/buffer ports.
     - *_iX for module instances with X incrementing for each instance of the
       same module. The instance number can be omitted if only one instance
-      exists.
+      exists. This helps when sorting instances by label/name e.g. when
+      inspecting the design hierarchy or a netlist.
       also: *_instX.
-      better: iX_* or instX_* ? as for labels its clearer what one is looking
-      at if a prefix is used...
+      whats better: iX_* or instX_* ? as for labels its clearer what one is
+      looking at if a prefix is used. however a prefix will undermine sorting.
     - module-submodule relations:
-      in structural code (!) the ports of a module
-      should be named <instance_name>_<port_name> when instantiated as a
-      submodule. conncetions b/w modules should be made based on these signals
-      only. no output port signal of one module should be applied directly to
+      in structural code (!) the signals connected to the ports of a module
+      should be named <instance_name>_<port_name> when instantiated.
+      conncetions b/w modules should be made based on these signals only.
+      no output port signal of one module should be applied directly to
       the input port of another module e.g. modB.data_i(i0_modA_data_o) bad!
     - module package/header file relations:
       the package of a module should be called <module_name>_pkg.vhd for VHDL
-      or <module_name>.vh for Verilog.
-    - 
-VHDL specific naming conventions:
+      or <module_name>.vh for Verilog or <module_name>.svh for SystemVerilog.
+      Correction: no extraneous package file for VHDL modules should be used.
+      Instead add the package at the top of the module file, before the entity.
+      In verilog header files for parameters and defines may still be required...
+
+- signal naming conventions:
+    - *_n/p for differential signal pairs.
+    - *_n to emphasize when a signal is low active.
+    - *_p to emphasize when a signal is high active.
+    - *_reg to emphasize that a signal represents a register.
+    - *_comb to emphasize a signal is the result of a combinatoric process.
+    - *_dX for delayed signals with X = delay in clock cycles,
+      e.g. data_d3.
+      also: *_prevX.
+    - *_nX for preloaded value with X = preload time in clock cycles,
+      e.g. data_n2 if data is valid/used in 2 clock cycles.
+      also: *_nextX.
+    - *_flag for flags that are sticky until reset by another signal.
+      To indicate an event has occured, e.g. zero flag.
+      For toggling applications, e.g. busy_flag asserted when a command is
+      issued and deasserted when process finished command.
+    - *_pulse for signals that only go high/low for one/few clock cycles.
+      also: *_strobe.
+    - *_sflag for status flag.
+    - *_sreg for status register.
+    - *_cflag for config flags.
+    - *_creg for config register.
+    - *_ctrl for signals that control data path logic,
+      e.g. mux_ctrl for the select signal of a multiplexer.
+    - *_tri for tristate signals.
+    - *_async for asynchronous signals or ports(?).
+- C_* for constants, all caps.
+- S_* for FSM states, all caps (since each state is encoded as a constant
+  somehow).
+  
+- VHDL specific naming conventions:
     - VHDL is case INSENSITIVE.
     - all common naming conventions hold.
-    - l_* for labels for processes, generate statements, loops, components,
-    configurations, case statements, if statements(?). Test if labels are 
-    understood by vendor tools.
+    - p/proc_* for labels for processes
+    - g/gen_* for labels for generate statements
+    - b/blk_* for blocks, rarely used.
+    - l/lp_* for labels for loops
+    - c/cfg_* for labels for configurations
+    - case_* for labels for case statements, rarely used
+    - if_* for labels for if statements, rarely used
+    - Test if labels are understood by vendor tools.
     - *_pkg for package names.
-    - t_* for type names. for user defined types it may be helpful to write the
-      type name in all caps, e.g. T_NATURAL_VECTOR.
+    - *_t for type names.
     - G_* for generics in all caps (to allow easy distinction from local
       constant).
     - C_* for constants in all caps.
-    - b_* for blocks (rarely used).
     - *_int for internal signals for output ports. Required for pre VHDL-2008
       code because reading an output ports is not allowed in VHDL-200X and
       earlier (which is major bullshit). Fixed by VHDL-2008, but should be
@@ -106,7 +135,7 @@ Naming of primitive elements:
     - preset/clear or set/reset or load/clear each pair asynchronous or synchronous.
     - high active or low active set/reset.
     - data in D, data out Q.
-    - negated data output Qbar/Qnot/Qn?
+    - negated data output Qbar/Qb/Qnot/Qn?
     - tristate output with output enable "oe"?
     - DFF/TFF/SRFF/JKFF/
     - generic mux, adder, lut, register, address decoder, 

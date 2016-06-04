@@ -2,85 +2,118 @@ Install doxygen and add its executable to your path.
 Optionally install graphviz to support the automated drawing of diagrams
 and other graphics (and add its executable to your path).
 
-Special doxygen comments start with '--!' and can be included into the source
-code to enable doxygen documentation generation.
+Special doxygen VHDL comments start with '--!' and can be included into the
+source code to enable doxygen documentation generation.
 These special comments should be used sparingly and should not be heavily
 interleaved into the flow of source code.
 The recommended usage aims towards documentation of interfaces and naming
 the purpose of certain design units, e.g. processes, without going into
 obvious implementation details.
 
+
 The following special commands of doxygen are used for code documentation:
 
 \author
 \authors
-In file header: name of the author(s) of the file.
+In file header:
+    Name of the author(s) of the file.
 
 \brief
-In file header: brief description of the design unit implemented in the file.
-                This should be a very compact summary of the task a design unit carries
-                out or the functionality it offers.
-Before process|subprogram|block|component instantiation: brief description of the functionality or purpose of the following design unit.
+In file header:
+    Brief description of the design unit implemented in the file.
+    This should be a very compact summary of the task a design unit carries
+    out or the functionality it offers.
+Before process|subprogram|block|component instantiation:
+    Brief description of the functionality or purpose of the following design
+    unit.
 
 \bug
-In file header: notify the user about bugs and known issues. Each bug/issue is listed separately.
-                If possible a way to avoid or work around the bug/issue should be suggested.
+In file header:
+    Notify the user about bugs and known issues. Each bug/issue is listed
+    separately.
+    If possible, a way to avoid or work around the bug/issue should be
+    suggested. However, fixing the bug is highly preferred.
 
 \copyright
-In file header: state the copyright and licensing conditions that apply to the file.
-                Should also contain contact information of the author or copyright holder.
+In file header:
+    State the copyright and licensing conditions that apply to the file.
+    Should also contain contact information of the author or copyright holder.
 
 \date
-In file header: date at which the last modification occured. The file header in total should always
-                be updated as soon as it becomes necessary.                
+In file header:
+    Date at which the last modification occured. The file header in total
+    should always be updated as soon as it becomes necessary.                
 
 \details
-In file header: 
-Before process|subprogram|block|component instantiation: more detailed description of the implementation of the design unit. Limitations and basic design criterions can be elaborated.
+In file header:
+Before process|subprogram|block|component instantiation:
+    More detailed description of the implementation of the design unit.
+    Limitations and basic design criterions can be elaborated.
 
 \example:
-In file header: a short example of the usage of the design unit.
-Before subprogram: show an usage example and the expected results.
+In file header:
+    A short! example of the usage of the design unit. If no short example is
+    possible leave it out completely and point to the documentation.
+Before subprogram:
+    Show a usage example and the expected results.
 
 \file
-In file header: add this command to enable doxygen documentation generation.
-                Only the name of the file without file extension should be noted here.
+In file header:
+    Add this command to enable doxygen documentation generation.
+    Only the name of the file without file extension should be noted here.
 
 \note
-Anywhere: Add to point out non-obvious connections and/or interrelations.
-          A note should add information and increase the understanding of code/text.
-          Do not repeat yourself.
+Anywhere:
+    Add to point out non-obvious connections and/or interrelations.
+    A note should add information and increase the understanding of code/text.
+    Do not repeat yourself.
 
 \param
-Before subprograms: parameters to subprogram.
+Before subprograms:
+    List and describe the parameters to the subprogram.
 Before processes:
+    List and describe the signals used within the process (?).
 
 \post
-Before subprograms: postcondition after calling subprogram.
-Before processes: postcondition after the process has carried out its intended task.
+Before subprograms:
+    Postcondition after calling the subprogram.
+Before processes:
+    Postcondition after the process has carried out its intended task.
 
 \pre
-Before subprograms: precondition before calling subprogram.
-Before processes: precondition for a process to start its intended task.
+Before subprograms:
+    Precondition before calling the subprogram.
+Before processes:
+    Precondition for a process to start its intended task.
 
 \see
-In file header: list of references useful for the understanding of the file.
-                E.g. standards, RFCs, papers, book chapters, web links &cetera.
+In file header:
+    List of references useful for the understanding of the file.
+    E.g. standards, RFCs, papers, book chapters, web links &cetera.
 
 \todo
-In file header: to remember tasks which must done later on but not right now.
-In source code: a reminder for improvements and/or limitations of code segments or implementation choices.
+In file header:
+    To remember tasks which must be done later on but not right now.
+    Suggestions on how to improve the module in the future.
+    However, if it can be done right now, do it right now!
+In source code:
+    A reminder for improvements and/or limitations of code segments or
+    implementation choices.
 
 \version
-In file header: version of the file. Automagic incrementing preferable on commit.
-                The format of the version should be specified up ahead.
+In file header:
+    Version of the file. Automagic incrementing preferable on commit/tag.
+    The format of the version should be specified up ahead.
 
 \vhdlflow
-Before process: Add in front of a process to create a flow diagram of the process.
-                Works decently well, but diagrams tend to get too big for
-                processes with normal complexity.
+Before process:
+    Add in front of a process to create a flow diagram of the process.
+    Works decently well, but diagrams tend to get too big for processes with
+    normal complexity.
 
 \warning
-In file header: warn of common errors or wrong usage of the design unit.
-In source code: Add within the code to prevent erroneous interpretation of code.
+In file header:
+    Warn of common errors or wrong usage of the design unit.
+In source code:
+    Add within the code to prevent erroneous interpretation of code.
 
