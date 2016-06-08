@@ -77,3 +77,4 @@ package body template_package is
         result <= (op = ZERO_WORD);
     end procedure equalZero;
 end package body template_package;
+
