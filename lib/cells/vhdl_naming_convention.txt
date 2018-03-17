@@ -1,0 +1,45 @@
+VHDL naming convention prefixes:
+
+Some of these naming conventions are to navigate easier through code,
+other naming conventions are to allow (easier) targeting of constraints towards
+specific portions of code.
+In both cases error reporting improves a lot because code sections are identified
+much more precisely, e.g. in which process did an error occure during simulation.
+
+Underline_delimited_naming should be preferred.
+CamelCaseNaming is not recommended in VHDL due to VHDLs case insensitive nature.
+Any tool may eliminate the camelcasenaming at any time which will make
+identifiers very hard to recognize.
+
+package         *_pkg
+entity          [any short yet descriptive name]
+architecture    [rtl|struct(ural)|behav(ioral)|net(list)|gate] (1)
+component       [same as entity identifier]
+
+signal          s_*
+variable        v_*
+shared variable sv_* ???
+
+input port      i_*
+output port     o_*
+generic         G_* + CAPITALIZED
+instance        i_* / *_iN !!!
+process         p_*
+generate        g_*
+loop            l_*
+block           b_*
+case            c_* ??? !!!
+if              if_* ???
+
+constant        C_*  + CAPITALIZED
+type            t_*
+subtype         st_* or ts_* ???
+record type     rt_* or tr_* ???
+physical type   pt_* or tp_* ???
+function        f_*
+procedure       p_* !!!
+
+
+(1) net as short for netlist should be avoided because it is a Verilog keyword.
+!!! potential conflict
+??? undecided; quenstionabel need for this
